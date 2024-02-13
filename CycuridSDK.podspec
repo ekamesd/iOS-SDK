@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
-  s.name         = "cycuridsdk"
-  s.version      = "0.1.8"
+  s.name         = "CycuridSDK"
+  s.version      = "0.1.1"
   s.summary      = "Cycurid Authentication SDK."
   s.description  = "We help build systes,"
   s.homepage     = "https://cycurid.com"
@@ -26,9 +26,9 @@ Pod::Spec.new do |s|
     }
   s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 
-    # spec.dependency "Alamofire", "~> 5.6.4"
-    # s.dependency "TensorFlowLiteGpuExperimental"
-    # s.dependency "OpenCV2", "~> 4.0.0"
+    s.dependency "Alamofire", "~> 5.6.4"
+    s.dependency "TensorFlowLiteGpuExperimental"
+    s.dependency "OpenCV2", "~> 4.0.0"
     s.dependency "themis", "~> 0.15.1"
     s.dependency "CryptoSwift", "~> 1.8.0"
 
