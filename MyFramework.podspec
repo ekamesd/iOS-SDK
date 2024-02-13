@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "cycuridsdk"
-  s.version      = "0.1.7"
+  s.version      = "0.1.8"
   s.summary      = "Cycurid Authentication SDK."
   s.description  = "We help build systes,"
   s.homepage     = "https://cycurid.com"
@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
                 LICENSE
               }
   s.author             = "Cycurid.com"
-  s.source = { :git => "https://github.com/ekamesd/iOS-SDK/iOS-SDK.git", :tag => "#{s.version}" }
+  s.source = { :git => "https://github.com/ekamesd/iOS-SDK.git", :tag => "#{s.version}" }
   # s.public_header_files = "MyFramework.framework/Headers/*.h"
   # s.source_files = "MyFramework.framework/Headers/*.h"
   # s.vendored_frameworks = "MyFramework.framework"
