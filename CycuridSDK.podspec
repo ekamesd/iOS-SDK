@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
                 LICENSE
               }
   s.author             = "Cycurid.com"
-  s.source = { :git => "https://github.com/ekamesd/iOS-SDK.git", :tag => "#{s.version}" }
+  s.source = { :git => "https://github.com/ekamesd/iOS-SDK", :tag => "#{s.version}" }
   # s.public_header_files = "MyFramework.framework/Headers/*.h"
   # s.source_files = "MyFramework.framework/Headers/*.h"
   # s.vendored_frameworks = "MyFramework.framework"
@@ -29,7 +29,6 @@ Pod::Spec.new do |s|
     s.dependency "Alamofire", "~> 5.6.4"
     s.dependency "TensorFlowLiteGpuExperimental"
     s.dependency "OpenCV2", "~> 4.0.0"
-    s.dependency "themis", "~> 0.15.1"
     s.dependency "CryptoSwift", "~> 1.8.0"
 
 end

@@ -1,0 +1,1817 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
+// swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name imme_ios
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import AVFoundation
+import AVKit
+import Alamofire
+import AudioToolbox
+import CommonCrypto
+import CoreImage
+import CoreNFC
+import CryptoKit
+import CryptoSwift
+import CryptoTokenKit
+import Darwin
+import Foundation
+import ImageIO
+import MachO
+import ObjectiveC
+import Swift
+import SystemConfiguration
+import UIKit
+import Vision
+import _Concurrency
+import _StringProcessing
+@_exported import imme_ios
+@available(iOS 13, macOS 10.15, *)
+public enum CertificateType {
+  case documentSigningCertificate
+  case issuerSigningCertificate
+  public static func == (a: imme_ios.CertificateType, b: imme_ios.CertificateType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@available(iOS 13, macOS 10.15, *)
+public enum CertificateItem : Swift.String {
+  case fingerprint
+  case issuerName
+  case subjectName
+  case serialNumber
+  case signatureAlgorithm
+  case publicKeyAlgorithm
+  case notBefore
+  case notAfter
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@available(iOS 13, macOS 10.15, *)
+public class X509Wrapper {
+  final public let cert: Swift.OpaquePointer
+  public init?(with cert: Swift.OpaquePointer?)
+  public func getItemsAsDict() -> [imme_ios.CertificateItem : Swift.String]
+  public func certToPEM() -> Swift.String
+  public func getFingerprint() -> Swift.String?
+  public func getNotBeforeDate() -> Swift.String?
+  public func getNotAfterDate() -> Swift.String?
+  public func getSerialNumber() -> Swift.String?
+  public func getSignatureAlgorithm() -> Swift.String?
+  public func getPublicKeyAlgorithm() -> Swift.String?
+  public func getIssuerName() -> Swift.String?
+  public func getSubjectName() -> Swift.String?
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class SecurityInfo {
+  public func getObjectIdentifier() -> Swift.String
+  public func getProtocolOIDString() -> Swift.String
+  @objc deinit
+}
+public protocol BiometricResultDelegate {
+  func biometricResult(result: Swift.String)
+}
+@available(iOS 13, macOS 10.15, *)
+public enum DocTypeEnum : Swift.String {
+  case TD1
+  case TD2
+  case OTHER
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class DataGroup1 : imme_ios.DataGroup {
+  public var elements: [Swift.String : Swift.String] {
+    get
+  }
+  @objc deinit
+}
+@available(iOS 13, macOS 10.15, *)
+public func AESEncrypt(key: [Swift.UInt8], message: [Swift.UInt8], iv: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func AESDecrypt(key: [Swift.UInt8], message: [Swift.UInt8], iv: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func AESECBEncrypt(key: [Swift.UInt8], message: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func tripleDESEncrypt(key: [Swift.UInt8], message: [Swift.UInt8], iv: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func tripleDESDecrypt(key: [Swift.UInt8], message: [Swift.UInt8], iv: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func DESEncrypt(key: [Swift.UInt8], message: [Swift.UInt8], iv: [Swift.UInt8], options: Swift.UInt32 = 0) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func DESDecrypt(key: [Swift.UInt8], message: [Swift.UInt8], iv: [Swift.UInt8], options: Swift.UInt32 = 0) -> [Swift.UInt8]
+@objc @_hasMissingDesignatedInitializers public class AAMVADocumentData : imme_ios.DocumentData {
+  @objc override public var firstName: Swift.String? {
+    @objc get
+  }
+  @objc override public var lastName: Swift.String? {
+    @objc get
+  }
+  @objc override public var address: Swift.String? {
+    @objc get
+  }
+  @objc override public var dateOfBirth: Swift.String? {
+    @objc get
+  }
+  @objc override public var dateOfIssue: Swift.String? {
+    @objc get
+  }
+  @objc override public var dateOfExpiry: Swift.String? {
+    @objc get
+  }
+  @objc override public var documentNumber: Swift.String? {
+    @objc get
+  }
+  @objc override public var sex: Swift.String? {
+    @objc get
+  }
+  @objc deinit
+}
+public enum PassportAuthenticationStatus {
+  case notDone
+  case success
+  case failed
+  public static func == (a: imme_ios.PassportAuthenticationStatus, b: imme_ios.PassportAuthenticationStatus) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@available(iOS 13, macOS 10.15, *)
+public class NFCPassportModel {
+  public var documentType: Swift.String {
+    get
+  }
+  public var documentSubType: Swift.String {
+    get
+  }
+  public var documentNumber: Swift.String {
+    get
+  }
+  public var issuingAuthority: Swift.String {
+    get
+  }
+  public var documentExpiryDate: Swift.String {
+    get
+  }
+  public var dateOfBirth: Swift.String {
+    get
+  }
+  public var gender: Swift.String {
+    get
+  }
+  public var nationality: Swift.String {
+    get
+  }
+  public var lastName: Swift.String {
+    get
+  }
+  public var firstName: Swift.String {
+    get
+  }
+  public var passportMRZ: Swift.String {
+    get
+  }
+  public var placeOfBirth: Swift.String? {
+    get
+  }
+  public var residenceAddress: Swift.String? {
+    get
+  }
+  public var phoneNumber: Swift.String? {
+    get
+  }
+  public var personalNumber: Swift.String? {
+    get
+  }
+  public var documentSigningCertificate: imme_ios.X509Wrapper? {
+    get
+  }
+  public var countrySigningCertificate: imme_ios.X509Wrapper? {
+    get
+  }
+  public var LDSVersion: Swift.String {
+    get
+  }
+  public var dataGroupsPresent: [Swift.String] {
+    get
+  }
+  public var dataGroupsAvailable: [imme_ios.DataGroupId] {
+    get
+  }
+  public var dataGroupsRead: [imme_ios.DataGroupId : imme_ios.DataGroup] {
+    get
+  }
+  public var dataGroupHashes: [imme_ios.DataGroupId : imme_ios.DataGroupHash] {
+    get
+  }
+  public var cardAccess: imme_ios.CardAccess? {
+    get
+  }
+  public var BACStatus: imme_ios.PassportAuthenticationStatus {
+    get
+  }
+  public var PACEStatus: imme_ios.PassportAuthenticationStatus {
+    get
+  }
+  public var chipAuthenticationStatus: imme_ios.PassportAuthenticationStatus {
+    get
+  }
+  public var passportCorrectlySigned: Swift.Bool {
+    get
+  }
+  public var documentSigningCertificateVerified: Swift.Bool {
+    get
+  }
+  public var passportDataNotTampered: Swift.Bool {
+    get
+  }
+  public var activeAuthenticationPassed: Swift.Bool {
+    get
+  }
+  public var activeAuthenticationChallenge: [Swift.UInt8] {
+    get
+  }
+  public var activeAuthenticationSignature: [Swift.UInt8] {
+    get
+  }
+  public var verificationErrors: [Swift.Error] {
+    get
+  }
+  public var isPACESupported: Swift.Bool {
+    get
+  }
+  public var isChipAuthenticationSupported: Swift.Bool {
+    get
+  }
+  public var passportImage: UIKit.UIImage? {
+    get
+  }
+  public var signatureImage: UIKit.UIImage? {
+    get
+  }
+  public var activeAuthenticationSupported: Swift.Bool {
+    get
+  }
+  public init()
+  public init(from dump: [Swift.String : Swift.String])
+  public func addDataGroup(_ id: imme_ios.DataGroupId, dataGroup: imme_ios.DataGroup)
+  public func getDataGroup(_ id: imme_ios.DataGroupId) -> imme_ios.DataGroup?
+  public func dumpPassportData(selectedDataGroups: [imme_ios.DataGroupId], includeActiveAuthenticationData: Swift.Bool = false) -> [Swift.String : Swift.String]
+  public func getHashesForDatagroups(hashAlgorythm: Swift.String) -> [imme_ios.DataGroupId : [Swift.UInt8]]
+  public func verifyPassport(masterListURL: Foundation.URL?, useCMSVerification: Swift.Bool = false)
+  public func verifyActiveAuthentication(challenge: [Swift.UInt8], signature: [Swift.UInt8])
+  @objc deinit
+}
+public struct DataField {
+  public let description: Swift.String
+  public let originalValue: Swift.String
+  public let parsedValue: Swift.String
+  public init(description: Swift.String, originalValue: Swift.String, parsedValue: Swift.String)
+}
+@_hasMissingDesignatedInitializers @objc public class AAMVAv1DocumentData : imme_ios.AAMVADocumentData {
+  @objc override public var lastName: Swift.String? {
+    @objc get
+  }
+  @objc deinit
+}
+@available(iOS 13, *)
+public class PACEHandler {
+  public init(cardAccess: imme_ios.CardAccess, tagReader: imme_ios.TagReader) throws
+  #if compiler(>=5.3) && $AsyncAwait
+  public func doPACE(mrzKey: Swift.String) async throws
+  #endif
+  @objc deinit
+}
+@available(iOS 13, *)
+public class BACHandler {
+  public var ksenc: [Swift.UInt8]
+  public var ksmac: [Swift.UInt8]
+  public var kifd: [Swift.UInt8]
+  public init()
+  public init(tagReader: imme_ios.TagReader)
+  #if compiler(>=5.3) && $AsyncAwait
+  public func performBACAndGetSessionKeys(mrzKey: Swift.String) async throws
+  #endif
+  public func sessionKeys(data: [Swift.UInt8]) throws -> ([Swift.UInt8], [Swift.UInt8], [Swift.UInt8])
+  @objc deinit
+}
+public enum Environment {
+  case dev
+  case staging
+  case production
+  public static func == (a: imme_ios.Environment, b: imme_ios.Environment) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class DataGroup14 : imme_ios.DataGroup {
+  public var securityInfos: [imme_ios.SecurityInfo] {
+    get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class OpenSSLUtils {
+  public static func getOpenSSLError() -> Swift.String
+  @available(iOS 13, macOS 10.15, *)
+  public static func getPublicKeyData(from key: Swift.OpaquePointer) -> [Swift.UInt8]?
+  @available(iOS 13, macOS 10.15, *)
+  public static func decodePublicKeyFromBytes(pubKeyData: [Swift.UInt8], params: Swift.OpaquePointer) -> Swift.OpaquePointer?
+  public static func computeSharedSecret(privateKeyPair: Swift.OpaquePointer, publicKey: Swift.OpaquePointer) -> [Swift.UInt8]
+  @objc deinit
+}
+@objc public enum BarcodeParserError : Swift.Int, Swift.Error {
+  case aamvaVersionParsingError
+  case subfileParserCreationError
+  case numberOfEntriesParsingError
+  case offsetParsingError
+  case dataLengthParsingError
+  case parseError, unsupportedBarcodeEncoding, emptyDocument
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public static var _nsErrorDomain: Swift.String {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum FileIntegrityCheck {
+  case bundleID(Swift.String)
+  case mobileProvision(Swift.String)
+  case machO(Swift.String, Swift.String)
+}
+extension imme_ios.FileIntegrityCheck {
+  public var description: Swift.String {
+    get
+  }
+}
+public typealias FileIntegrityCheckResult = (result: Swift.Bool, hitChecks: [imme_ios.FileIntegrityCheck])
+public enum IntegrityCheckerImageTarget {
+  case `default`
+  case custom(Swift.String)
+}
+public enum SecureMessagingSupportedAlgorithms {
+  case DES
+  case AES
+  public static func == (a: imme_ios.SecureMessagingSupportedAlgorithms, b: imme_ios.SecureMessagingSupportedAlgorithms) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@available(iOS 13, *)
+public class SecureMessaging {
+  public init(encryptionAlgorithm: imme_ios.SecureMessagingSupportedAlgorithms = .DES, ksenc: [Swift.UInt8], ksmac: [Swift.UInt8], ssc: [Swift.UInt8])
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class AAMVABarcodeParser : ObjectiveC.NSObject, imme_ios.BarcodeParsing {
+  @objc public func parseData(_ data: Foundation.Data) throws -> imme_ios.DocumentData
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class AAMVAv4DocumentData : imme_ios.AAMVADocumentData {
+  @objc deinit
+}
+public enum CYCURID_REQUEST_TYPE {
+  case ISHUMAN
+  case VERIFICATION
+  case EXTRACTION
+  case SANCTION
+  public static func == (a: imme_ios.CYCURID_REQUEST_TYPE, b: imme_ios.CYCURID_REQUEST_TYPE) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum APIType {
+  case ISHUMAN
+  case IDENTIFICATION
+  case VERIFICATION
+  case DATA_EXTRACTION
+  case SANCTIONED_EXTRACTION
+  public static func == (a: imme_ios.APIType, b: imme_ios.APIType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class CycurIDConfiguration {
+  public static func Configure(apiKey: Swift.String, secretKey: Swift.String, uuid: Swift.String, completion: @escaping (Swift.Result<imme_ios.CycurIDClass, Swift.Error>) -> Swift.Void)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class CycurIDClass {
+  public func Configure(apiKey: Swift.String)
+  public static func testSaveKeychain(jwt: Swift.String)
+  public static func testRetrieveKeychain() -> Swift.String
+  public func beginProcess(vc: UIKit.UIViewController, flow: imme_ios.APIType)
+  public func beginProcessReact(vc: UIKit.UIViewController)
+  public func isHumanCheck()
+  public func LivenessDocumentCheck()
+  public func Verification()
+  public func FullBiometricCheck()
+  @objc deinit
+}
+@available(iOS 13, macOS 10.15, *)
+public class ASN1Item : Swift.CustomDebugStringConvertible {
+  public init(line: Swift.String)
+  public func getChild(_ child: Swift.Int) -> imme_ios.ASN1Item?
+  public func getNumberOfChildren() -> Swift.Int
+  public var debugDescription: Swift.String {
+    get
+  }
+  @objc deinit
+}
+@available(iOS 13, macOS 10.15, *)
+public class SimpleASN1DumpParser {
+  public init()
+  public func parse(data: Foundation.Data) throws -> imme_ios.ASN1Item
+  public func test()
+  @objc deinit
+}
+public func loadMyFonts()
+public protocol QKMRZScannerViewDelegate : AnyObject {
+  func mrzScannerView(_ mrzScannerView: imme_ios.QKMRZScannerView, didFind scanResult: imme_ios.QKMRZScanResult)
+}
+@objc @_inheritsConvenienceInitializers @IBDesignable @_Concurrency.MainActor(unsafe) public class QKMRZScannerView : UIKit.UIView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var isScanning: Swift.Bool
+  @_Concurrency.MainActor(unsafe) public var vibrateOnResult: Swift.Bool
+  @_Concurrency.MainActor(unsafe) weak public var delegate: imme_ios.QKMRZScannerViewDelegate?
+  @_Concurrency.MainActor(unsafe) public var cutoutRect: CoreFoundation.CGRect {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func prepareForInterfaceBuilder()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) public func startScanning()
+  @_Concurrency.MainActor(unsafe) public func stopScanning()
+}
+extension imme_ios.QKMRZScannerView : AVFoundation.AVCaptureVideoDataOutputSampleBufferDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func captureOutput(_ output: AVFoundation.AVCaptureOutput, didOutput sampleBuffer: CoreMedia.CMSampleBuffer, from connection: AVFoundation.AVCaptureConnection)
+}
+extension Swift.String {
+  public func charAt(_ index: Swift.Int) -> Swift.Character
+  public mutating func setCharAt(_ index: Swift.Int, _ new: Swift.Character)
+  public mutating func setCharAt(_ index: Swift.Int, _ new: Swift.String)
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class DataGroup {
+  public var datagroupType: imme_ios.DataGroupId
+  public var body: [Swift.UInt8] {
+    get
+  }
+  public var data: [Swift.UInt8] {
+    get
+  }
+  public func hash(_ hashAlgorythm: Swift.String) -> [Swift.UInt8]
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class ChipAuthenticationPublicKeyInfo : imme_ios.SecurityInfo {
+  override public func getObjectIdentifier() -> Swift.String
+  override public func getProtocolOIDString() -> Swift.String
+  public func getKeyId() -> Swift.Int
+  @objc deinit
+}
+extension UIKit.UIImageView {
+  @_Concurrency.MainActor(unsafe) public func loadGif(name: Swift.String)
+  @available(iOS 9.0, *)
+  @_Concurrency.MainActor(unsafe) public func loadGif(asset: Swift.String)
+}
+extension UIKit.UIImage {
+  public class func gif(data: Foundation.Data) -> UIKit.UIImage?
+  public class func gif(url: Swift.String) -> UIKit.UIImage?
+  public class func gif(name: Swift.String) -> UIKit.UIImage?
+  @available(iOS 9.0, *)
+  public class func gif(asset: Swift.String) -> UIKit.UIImage?
+}
+@_inheritsConvenienceInitializers @objc open class DocumentData : ObjectiveC.NSObject {
+  @objc public var isEmpty: Swift.Bool {
+    @objc get
+  }
+  @objc open var firstName: Swift.String? {
+    @objc get
+  }
+  @objc open var lastName: Swift.String? {
+    @objc get
+  }
+  @objc open var address: Swift.String? {
+    @objc get
+  }
+  @objc open var dateOfBirth: Swift.String? {
+    @objc get
+  }
+  @objc open var dateOfExpiry: Swift.String? {
+    @objc get
+  }
+  @objc open var dateOfIssue: Swift.String? {
+    @objc get
+  }
+  @objc open var documentNumber: Swift.String? {
+    @objc get
+  }
+  @objc open var sex: Swift.String? {
+    @objc get
+  }
+  @objc public var rawData: Foundation.Data?
+  @objc public subscript(id: Swift.String) -> Swift.String? {
+    @objc get
+  }
+  @objc public var entryMap: [Swift.String : Swift.String] {
+    @objc get
+  }
+  public var entries: [(key: Swift.String, value: Swift.String)] {
+    get
+  }
+  public func setValue(_ value: imme_ios.DataField, forEntryID id: Swift.String)
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension Swift.String {
+  public var a: Swift.String {
+    get
+  }
+  public var b: Swift.String {
+    get
+  }
+  public var c: Swift.String {
+    get
+  }
+  public var d: Swift.String {
+    get
+  }
+  public var e: Swift.String {
+    get
+  }
+  public var f: Swift.String {
+    get
+  }
+  public var g: Swift.String {
+    get
+  }
+  public var h: Swift.String {
+    get
+  }
+  public var i: Swift.String {
+    get
+  }
+  public var j: Swift.String {
+    get
+  }
+  public var k: Swift.String {
+    get
+  }
+  public var l: Swift.String {
+    get
+  }
+  public var m: Swift.String {
+    get
+  }
+  public var n: Swift.String {
+    get
+  }
+  public var o: Swift.String {
+    get
+  }
+  public var p: Swift.String {
+    get
+  }
+  public var q: Swift.String {
+    get
+  }
+  public var r: Swift.String {
+    get
+  }
+  public var s: Swift.String {
+    get
+  }
+  public var t: Swift.String {
+    get
+  }
+  public var u: Swift.String {
+    get
+  }
+  public var v: Swift.String {
+    get
+  }
+  public var w: Swift.String {
+    get
+  }
+  public var x: Swift.String {
+    get
+  }
+  public var y: Swift.String {
+    get
+  }
+  public var z: Swift.String {
+    get
+  }
+}
+@objc extension Foundation.NSMutableString {
+  @objc dynamic public var a: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var b: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var c: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var d: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var e: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var f: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var g: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var h: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var i: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var j: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var k: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var l: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var m: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var n: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var o: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var p: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var q: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var r: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var s: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var t: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var u: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var v: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var w: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var x: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var y: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var z: Foundation.NSMutableString {
+    @objc get
+  }
+}
+extension Swift.String {
+  public var A: Swift.String {
+    get
+  }
+  public var B: Swift.String {
+    get
+  }
+  public var C: Swift.String {
+    get
+  }
+  public var D: Swift.String {
+    get
+  }
+  public var E: Swift.String {
+    get
+  }
+  public var F: Swift.String {
+    get
+  }
+  public var G: Swift.String {
+    get
+  }
+  public var H: Swift.String {
+    get
+  }
+  public var I: Swift.String {
+    get
+  }
+  public var J: Swift.String {
+    get
+  }
+  public var K: Swift.String {
+    get
+  }
+  public var L: Swift.String {
+    get
+  }
+  public var M: Swift.String {
+    get
+  }
+  public var N: Swift.String {
+    get
+  }
+  public var O: Swift.String {
+    get
+  }
+  public var P: Swift.String {
+    get
+  }
+  public var Q: Swift.String {
+    get
+  }
+  public var R: Swift.String {
+    get
+  }
+  public var S: Swift.String {
+    get
+  }
+  public var T: Swift.String {
+    get
+  }
+  public var U: Swift.String {
+    get
+  }
+  public var V: Swift.String {
+    get
+  }
+  public var W: Swift.String {
+    get
+  }
+  public var X: Swift.String {
+    get
+  }
+  public var Y: Swift.String {
+    get
+  }
+  public var Z: Swift.String {
+    get
+  }
+}
+@objc extension Foundation.NSMutableString {
+  @objc dynamic public var A: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var B: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var C: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var D: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var E: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var F: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var G: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var H: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var I: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var J: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var K: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var L: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var M: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var N: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var O: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var P: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var Q: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var R: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var S: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var T: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var U: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var V: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var W: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var X: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var Y: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var Z: Foundation.NSMutableString {
+    @objc get
+  }
+}
+extension Swift.String {
+  public var _1: Swift.String {
+    get
+  }
+  public var _2: Swift.String {
+    get
+  }
+  public var _3: Swift.String {
+    get
+  }
+  public var _4: Swift.String {
+    get
+  }
+  public var _5: Swift.String {
+    get
+  }
+  public var _6: Swift.String {
+    get
+  }
+  public var _7: Swift.String {
+    get
+  }
+  public var _8: Swift.String {
+    get
+  }
+  public var _9: Swift.String {
+    get
+  }
+  public var _0: Swift.String {
+    get
+  }
+}
+@objc extension Foundation.NSMutableString {
+  @objc dynamic public var _1: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var _2: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var _3: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var _4: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var _5: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var _6: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var _7: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var _8: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var _9: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var _0: Foundation.NSMutableString {
+    @objc get
+  }
+}
+extension Swift.String {
+  public var space: Swift.String {
+    get
+  }
+  public var point: Swift.String {
+    get
+  }
+  public var dash: Swift.String {
+    get
+  }
+  public var comma: Swift.String {
+    get
+  }
+  public var semicolon: Swift.String {
+    get
+  }
+  public var colon: Swift.String {
+    get
+  }
+  public var apostrophe: Swift.String {
+    get
+  }
+  public var quotation: Swift.String {
+    get
+  }
+  public var plus: Swift.String {
+    get
+  }
+  public var equals: Swift.String {
+    get
+  }
+  public var paren_left: Swift.String {
+    get
+  }
+  public var paren_right: Swift.String {
+    get
+  }
+  public var asterisk: Swift.String {
+    get
+  }
+  public var ampersand: Swift.String {
+    get
+  }
+  public var caret: Swift.String {
+    get
+  }
+  public var percent: Swift.String {
+    get
+  }
+  public var $: Swift.String {
+    get
+  }
+  public var pound: Swift.String {
+    get
+  }
+  public var at: Swift.String {
+    get
+  }
+  public var exclamation: Swift.String {
+    get
+  }
+  public var question_mark: Swift.String {
+    get
+  }
+  public var back_slash: Swift.String {
+    get
+  }
+  public var forward_slash: Swift.String {
+    get
+  }
+  public var curly_left: Swift.String {
+    get
+  }
+  public var curly_right: Swift.String {
+    get
+  }
+  public var bracket_left: Swift.String {
+    get
+  }
+  public var bracket_right: Swift.String {
+    get
+  }
+  public var bar: Swift.String {
+    get
+  }
+  public var less_than: Swift.String {
+    get
+  }
+  public var greater_than: Swift.String {
+    get
+  }
+  public var underscore: Swift.String {
+    get
+  }
+  public var tilda: Swift.String {
+    get
+  }
+}
+@objc extension Foundation.NSMutableString {
+  @objc dynamic public var space: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var point: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var dash: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var comma: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var semicolon: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var colon: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var apostrophe: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var quotation: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var plus: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var equals: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var paren_left: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var paren_right: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var asterisk: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var ampersand: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var caret: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var percent: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var $: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var pound: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var at: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var exclamation: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var question_mark: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var back_slash: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var forward_slash: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var curly_left: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var curly_right: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var bracket_left: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var bracket_right: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var bar: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var less_than: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var greater_than: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var underscore: Foundation.NSMutableString {
+    @objc get
+  }
+  @objc dynamic public var tilda: Foundation.NSMutableString {
+    @objc get
+  }
+}
+extension Swift.String {
+  public var dot: Swift.String {
+    get
+  }
+}
+@objc extension Foundation.NSMutableString {
+  @objc dynamic public var dot: Foundation.NSMutableString {
+    @objc get
+  }
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class NotImplementedDG : imme_ios.DataGroup {
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class AAMVAv7DocumentData : imme_ios.AAMVADocumentData {
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class AAMVAv8DocumentData : imme_ios.AAMVADocumentData {
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @available(iOSApplicationExtension, unavailable)
+public class IOSSecuritySuite {
+  public static func amIJailbroken() -> Swift.Bool
+  public static func amIJailbrokenWithFailMessage() -> (jailbroken: Swift.Bool, failMessage: Swift.String)
+  public static func amIJailbrokenWithFailedChecks() -> (jailbroken: Swift.Bool, failedChecks: [imme_ios.FailedCheckType])
+  public static func amIRunInEmulator() -> Swift.Bool
+  public static func amIDebugged() -> Swift.Bool
+  public static func denyDebugger()
+  public static func amITampered(_ checks: [imme_ios.FileIntegrityCheck]) -> imme_ios.FileIntegrityCheckResult
+  public static func amIReverseEngineered() -> Swift.Bool
+  public static func amIReverseEngineeredWithFailedChecks() -> (reverseEngineered: Swift.Bool, failedChecks: [imme_ios.FailedCheckType])
+  public static func amIRuntimeHooked(dyldWhiteList: [Swift.String], detectionClass: Swift.AnyClass, selector: ObjectiveC.Selector, isClassMethod: Swift.Bool) -> Swift.Bool
+  public static func amIProxied() -> Swift.Bool
+  @objc deinit
+}
+@available(iOSApplicationExtension, unavailable)
+extension imme_ios.IOSSecuritySuite {
+  public static func amIMSHooked(_ functionAddress: Swift.UnsafeMutableRawPointer) -> Swift.Bool
+  public static func denyMSHook(_ functionAddress: Swift.UnsafeMutableRawPointer) -> Swift.UnsafeMutableRawPointer?
+  public static func denySymbolHook(_ symbol: Swift.String)
+  public static func denySymbolHook(_ symbol: Swift.String, at image: Swift.UnsafePointer<MachO.mach_header>, imageSlide slide: Swift.Int)
+  public static func getMachOFileHashValue(_ target: imme_ios.IntegrityCheckerImageTarget = .default) -> Swift.String?
+  public static func findLoadedDylibs(_ target: imme_ios.IntegrityCheckerImageTarget = .default) -> [Swift.String]?
+  public static func hasBreakpointAt(_ functionAddr: Swift.UnsafeRawPointer, functionSize: Darwin.vm_size_t?) -> Swift.Bool
+  public static func hasWatchpoint() -> Swift.Bool
+}
+public enum PACEMappingType {
+  case GM
+  case IM
+  case CAM
+  public static func == (a: imme_ios.PACEMappingType, b: imme_ios.PACEMappingType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class PACEInfo : imme_ios.SecurityInfo {
+  public static let PARAM_ID_GFP_1024_160: Swift.Int
+  public static let PARAM_ID_GFP_2048_224: Swift.Int
+  public static let PARAM_ID_GFP_2048_256: Swift.Int
+  public static let PARAM_ID_ECP_NIST_P192_R1: Swift.Int
+  public static let PARAM_ID_ECP_BRAINPOOL_P192_R1: Swift.Int
+  public static let PARAM_ID_ECP_NIST_P224_R1: Swift.Int
+  public static let PARAM_ID_ECP_BRAINPOOL_P224_R1: Swift.Int
+  public static let PARAM_ID_ECP_NIST_P256_R1: Swift.Int
+  public static let PARAM_ID_ECP_BRAINPOOL_P256_R1: Swift.Int
+  public static let PARAM_ID_ECP_BRAINPOOL_P320_R1: Swift.Int
+  public static let PARAM_ID_ECP_NIST_P384_R1: Swift.Int
+  public static let PARAM_ID_ECP_BRAINPOOL_P384_R1: Swift.Int
+  public static let PARAM_ID_ECP_BRAINPOOL_P512_R1: Swift.Int
+  public static let PARAM_ID_ECP_NIST_P521_R1: Swift.Int
+  override public func getObjectIdentifier() -> Swift.String
+  override public func getProtocolOIDString() -> Swift.String
+  public func getVersion() -> Swift.Int
+  public func getParameterId() -> Swift.Int?
+  public func getParameterSpec() throws -> Swift.Int32
+  public func getMappingType() throws -> imme_ios.PACEMappingType
+  public func getKeyAgreementAlgorithm() throws -> Swift.String
+  public func getCipherAlgorithm() throws -> Swift.String
+  public func getDigestAlgorithm() throws -> Swift.String
+  public func getKeyLength() throws -> Swift.Int
+  public func createMappingKey() throws -> Swift.OpaquePointer
+  public static func getParameterSpec(stdDomainParam: Swift.Int) throws -> Swift.Int32
+  public static func toMappingType(oid: Swift.String) throws -> imme_ios.PACEMappingType
+  public static func toKeyAgreementAlgorithm(oid: Swift.String) throws -> Swift.String
+  public static func toCipherAlgorithm(oid: Swift.String) throws -> Swift.String
+  public static func toDigestAlgorithm(oid: Swift.String) throws -> Swift.String
+  public static func toKeyLength(oid: Swift.String) throws -> Swift.Int
+  @objc deinit
+}
+@available(iOS 13, macOS 10.15, *)
+public struct DataGroupHash {
+  public var id: Swift.String
+  public var sodHash: Swift.String
+  public var computedHash: Swift.String
+  public var match: Swift.Bool
+}
+public protocol RNCryptorType {
+  init(password: Swift.String)
+  func update(withData data: Foundation.Data) throws -> Foundation.Data
+  func finalData() throws -> Foundation.Data
+}
+public enum RNCryptor {
+  public enum Error : Swift.Int, Swift.Error {
+    case hmacMismatch
+    case unknownHeader
+    case messageTooShort
+    case memoryFailure
+    case invalidCredentialType
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public static func encrypt(data: Foundation.Data, withPassword password: Swift.String) -> Foundation.Data
+  public static func decrypt(data: Foundation.Data, withPassword password: Swift.String) throws -> Foundation.Data
+  public static func randomData(ofLength length: Swift.Int) -> Foundation.Data
+  final public class Encryptor : imme_ios.RNCryptorType {
+    public init(password: Swift.String)
+    final public func update(withData data: Foundation.Data) -> Foundation.Data
+    final public func finalData() -> Foundation.Data
+    final public func encrypt(data: Foundation.Data) -> Foundation.Data
+    @objc deinit
+  }
+  final public class Decryptor : imme_ios.RNCryptorType {
+    public init(password: Swift.String)
+    final public func decrypt(data: Foundation.Data) throws -> Foundation.Data
+    final public func update(withData data: Foundation.Data) throws -> Foundation.Data
+    final public func finalData() throws -> Foundation.Data
+    @objc deinit
+  }
+}
+extension imme_ios.RNCryptor {
+  @_hasMissingDesignatedInitializers final public class FormatV3 {
+    public static let keySize: Swift.Int
+    public static let saltSize: Swift.Int
+    public static func makeKey(forPassword password: Swift.String, withSalt salt: Foundation.Data) -> Foundation.Data
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers final public class EncryptorV3 : imme_ios.RNCryptorType {
+    convenience public init(password: Swift.String)
+    convenience public init(encryptionKey: Foundation.Data, hmacKey: Foundation.Data)
+    final public func encrypt(data: Foundation.Data) -> Foundation.Data
+    final public func update(withData data: Foundation.Data) -> Foundation.Data
+    final public func finalData() -> Foundation.Data
+    @objc deinit
+  }
+  final public class DecryptorV3 {
+    public init(password: Swift.String)
+    public init(encryptionKey: Foundation.Data, hmacKey: Foundation.Data)
+    final public func decrypt(data: Foundation.Data) throws -> Foundation.Data
+    final public func update(withData data: Foundation.Data) throws -> Foundation.Data
+    final public func finalData() throws -> Foundation.Data
+    @objc deinit
+  }
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class CardAccess {
+  public var securityInfos: [imme_ios.SecurityInfo] {
+    get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class AAMVAv5DocumentData : imme_ios.AAMVADocumentData {
+  @objc deinit
+}
+public struct QKMRZResult {
+  public let documentType: Swift.String
+  public let countryCode: Swift.String
+  public let surnames: Swift.String
+  public let givenNames: Swift.String
+  public let documentNumber: Swift.String
+  public let nationality: Swift.String
+  public let birthDate: Foundation.Date?
+  public let sex: Swift.String?
+  public let expiryDate: Foundation.Date?
+  public let personalNumber: Swift.String
+  public let personalNumber2: Swift.String?
+  public let isDocumentNumberValid: Swift.Bool
+  public let isBirthDateValid: Swift.Bool
+  public let isExpiryDateValid: Swift.Bool
+  public let isPersonalNumberValid: Swift.Bool?
+  public let allCheckDigitsValid: Swift.Bool
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class COM : imme_ios.DataGroup {
+  public var version: Swift.String {
+    get
+  }
+  public var unicodeVersion: Swift.String {
+    get
+  }
+  public var dataGroupsPresent: [Swift.String] {
+    get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class AAMVAv2DocumentData : imme_ios.AAMVADocumentData {
+  @objc override public var firstName: Swift.String? {
+    @objc get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class ActiveAuthenticationInfo : imme_ios.SecurityInfo {
+  override public func getObjectIdentifier() -> Swift.String
+  override public func getProtocolOIDString() -> Swift.String
+  public func getSignatureAlgorithmOIDString() -> Swift.String?
+  @objc deinit
+}
+public typealias FailedCheckType = (check: imme_ios.FailedCheck, failMessage: Swift.String)
+public enum FailedCheck : Swift.CaseIterable {
+  case urlSchemes
+  case existenceOfSuspiciousFiles
+  case suspiciousFilesCanBeOpened
+  case restrictedDirectoriesWriteable
+  case fork
+  case symbolicLinks
+  case dyld
+  case openedPorts
+  case pSelectFlag
+  case suspiciousObjCClasses
+  public static func == (a: imme_ios.FailedCheck, b: imme_ios.FailedCheck) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public typealias AllCases = [imme_ios.FailedCheck]
+  public static var allCases: [imme_ios.FailedCheck] {
+    get
+  }
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@available(iOS 13, macOS 10.15, *)
+public enum NFCViewDisplayMessage {
+  case requestPresentPassport
+  case authenticatingWithPassport(Swift.Int)
+  case readingDataGroupProgress(imme_ios.DataGroupId, Swift.Int)
+  case error(imme_ios.NFCPassportReaderError)
+  case successfulRead
+}
+@available(iOS 13, macOS 10.15, *)
+extension imme_ios.NFCViewDisplayMessage {
+  public var description: Swift.String {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class DataGroup15 : imme_ios.DataGroup {
+  public var rsaPublicKey: Swift.OpaquePointer? {
+    get
+  }
+  public var ecdsaPublicKey: Swift.OpaquePointer? {
+    get
+  }
+  @objc deinit
+}
+public func binToHexRep(_ val: [Swift.UInt8], asArray: Swift.Bool = false) -> Swift.String
+public func binToHexRep(_ val: Swift.UInt8) -> Swift.String
+public func binToHex(_ val: Swift.UInt8) -> Swift.Int
+public func binToHex(_ val: [Swift.UInt8]) -> Swift.UInt64
+public func binToHex(_ val: Swift.ArraySlice<Swift.UInt8>) -> Swift.UInt64
+public func hexToBin(_ val: Swift.UInt64) -> [Swift.UInt8]
+public func binToInt(_ val: Swift.ArraySlice<Swift.UInt8>) -> Swift.Int
+public func binToInt(_ val: [Swift.UInt8]) -> Swift.Int
+public func intToBin(_ data: Swift.Int, pad: Swift.Int = 2) -> [Swift.UInt8]
+public func hexRepToBin(_ val: Swift.String) -> [Swift.UInt8]
+public func xor(_ kifd: [Swift.UInt8], _ response_kicc: [Swift.UInt8]) -> [Swift.UInt8]
+public func generateRandomUInt8Array(_ size: Swift.Int) -> [Swift.UInt8]
+public func pad(_ toPad: [Swift.UInt8], blockSize: Swift.Int) -> [Swift.UInt8]
+public func unpad(_ tounpad: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func mac(algoName: imme_ios.SecureMessagingSupportedAlgorithms, key: [Swift.UInt8], msg: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func desMAC(key: [Swift.UInt8], msg: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func aesMAC(key: [Swift.UInt8], msg: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func wrapDO(b: Swift.UInt8, arr: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func unwrapDO(tag: Swift.UInt8, wrappedData: [Swift.UInt8]) throws -> [Swift.UInt8]
+public func intToBytes(val: Swift.Int, removePadding: Swift.Bool) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func oidToBytes(oid: Swift.String, replaceTag: Swift.Bool) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func asn1Length(_ data: Swift.ArraySlice<Swift.UInt8>) throws -> (Swift.Int, Swift.Int)
+@available(iOS 13, macOS 10.15, *)
+public func asn1Length(_ data: [Swift.UInt8]) throws -> (Swift.Int, Swift.Int)
+@available(iOS 13, macOS 10.15, *)
+public func toAsn1Length(_ data: Swift.Int) throws -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func calcHash(data: [Swift.UInt8], hashAlgorithm: Swift.String) throws -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func calcSHA1Hash(_ data: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func calcSHA224Hash(_ data: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func calcSHA256Hash(_ data: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func calcSHA512Hash(_ data: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func calcSHA384Hash(_ data: [Swift.UInt8]) -> [Swift.UInt8]
+public class QKMRZParser {
+  public init(ocrCorrection: Swift.Bool = false)
+  public func parse(mrzLines: [Swift.String]) -> imme_ios.QKMRZResult?
+  public func parse(mrzString: Swift.String) -> imme_ios.QKMRZResult?
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class QKMRZScanResult {
+  final public let documentImage: UIKit.UIImage
+  final public let documentType: Swift.String
+  final public let countryCode: Swift.String
+  final public let surnames: Swift.String
+  final public let givenNames: Swift.String
+  final public let documentNumber: Swift.String
+  final public let nationality: Swift.String
+  final public let birthDate: Foundation.Date?
+  final public let sex: Swift.String?
+  final public let expiryDate: Foundation.Date?
+  final public let personalNumber: Swift.String
+  final public let personalNumber2: Swift.String?
+  public var faceImage: UIKit.UIImage? {
+    get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class ChipAuthenticationInfo : imme_ios.SecurityInfo {
+  override public func getObjectIdentifier() -> Swift.String
+  override public func getProtocolOIDString() -> Swift.String
+  public func getKeyId() -> Swift.Int
+  public static func toKeyAgreementAlgorithm(oid: Swift.String) throws -> Swift.String
+  public static func toCipherAlgorithm(oid: Swift.String) throws -> Swift.String
+  public static func toKeyLength(oid: Swift.String) throws -> Swift.Int
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class DataGroup2 : imme_ios.DataGroup {
+  public var nrImages: Swift.Int {
+    get
+  }
+  public var versionNumber: Swift.Int {
+    get
+  }
+  public var lengthOfRecord: Swift.Int {
+    get
+  }
+  public var numberOfFacialImages: Swift.Int {
+    get
+  }
+  public var facialRecordDataLength: Swift.Int {
+    get
+  }
+  public var nrFeaturePoints: Swift.Int {
+    get
+  }
+  public var gender: Swift.Int {
+    get
+  }
+  public var eyeColor: Swift.Int {
+    get
+  }
+  public var hairColor: Swift.Int {
+    get
+  }
+  public var featureMask: Swift.Int {
+    get
+  }
+  public var expression: Swift.Int {
+    get
+  }
+  public var poseAngle: Swift.Int {
+    get
+  }
+  public var poseAngleUncertainty: Swift.Int {
+    get
+  }
+  public var faceImageType: Swift.Int {
+    get
+  }
+  public var imageDataType: Swift.Int {
+    get
+  }
+  public var imageWidth: Swift.Int {
+    get
+  }
+  public var imageHeight: Swift.Int {
+    get
+  }
+  public var imageColorSpace: Swift.Int {
+    get
+  }
+  public var sourceType: Swift.Int {
+    get
+  }
+  public var deviceType: Swift.Int {
+    get
+  }
+  public var quality: Swift.Int {
+    get
+  }
+  public var imageData: [Swift.UInt8] {
+    get
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class MagStripeDocumentData : imme_ios.DocumentData {
+  @objc override public var firstName: Swift.String? {
+    @objc get
+  }
+  @objc override public var lastName: Swift.String? {
+    @objc get
+  }
+  @objc override public var address: Swift.String? {
+    @objc get
+  }
+  @objc override public var dateOfBirth: Swift.String? {
+    @objc get
+  }
+  @objc override public var dateOfExpiry: Swift.String? {
+    @objc get
+  }
+  @objc override public var sex: Swift.String? {
+    @objc get
+  }
+  @objc override public var documentNumber: Swift.String? {
+    @objc get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class DataGroup11 : imme_ios.DataGroup {
+  public var fullName: Swift.String? {
+    get
+  }
+  public var personalNumber: Swift.String? {
+    get
+  }
+  public var dateOfBirth: Swift.String? {
+    get
+  }
+  public var placeOfBirth: Swift.String? {
+    get
+  }
+  public var address: Swift.String? {
+    get
+  }
+  public var telephone: Swift.String? {
+    get
+  }
+  public var profession: Swift.String? {
+    get
+  }
+  public var title: Swift.String? {
+    get
+  }
+  public var personalSummary: Swift.String? {
+    get
+  }
+  public var proofOfCitizenship: Swift.String? {
+    get
+  }
+  public var tdNumbers: Swift.String? {
+    get
+  }
+  public var custodyInfo: Swift.String? {
+    get
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class DataGroup7 : imme_ios.DataGroup {
+  public var imageData: [Swift.UInt8] {
+    get
+  }
+  @objc deinit
+}
+public enum LogLevel : Swift.Int, Swift.CaseIterable {
+  case verbose
+  case debug
+  case info
+  case warning
+  case error
+  case none
+  public init?(rawValue: Swift.Int)
+  public typealias AllCases = [imme_ios.LogLevel]
+  public typealias RawValue = Swift.Int
+  public static var allCases: [imme_ios.LogLevel] {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class Log {
+  public static var logLevel: imme_ios.LogLevel
+  public static var storeLogs: Swift.Bool
+  public static var logData: [Swift.String]
+  public class func verbose(_ msg: @autoclosure () -> Swift.String)
+  public class func debug(_ msg: @autoclosure () -> Swift.String)
+  public class func info(_ msg: @autoclosure () -> Swift.String)
+  public class func warning(_ msg: @autoclosure () -> Swift.String)
+  public class func error(_ msg: @autoclosure () -> Swift.String)
+  public class func clearStoredLogs()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, *)
+public class TagReader {
+  @objc deinit
+}
+@objc @available(iOS 13, *)
+public class PassportReader : ObjectiveC.NSObject {
+  public var passiveAuthenticationUsesOpenSSL: Swift.Bool
+  public var count: Swift.Int
+  public init(logLevel: imme_ios.LogLevel = .info, masterListURL: Foundation.URL? = nil)
+  public func setMasterListURL(_ masterListURL: Foundation.URL)
+  public func overrideNFCDataAmountToRead(amount: Swift.Int)
+  #if compiler(>=5.3) && $AsyncAwait
+  public func readPassport(mrzKey: Swift.String, tags: [imme_ios.DataGroupId] = [], skipSecureElements: Swift.Bool = true, skipCA: Swift.Bool = false, skipPACE: Swift.Bool = false, customDisplayMessage: ((imme_ios.NFCViewDisplayMessage) -> Swift.String?)? = nil) async throws -> imme_ios.NFCPassportModel
+  #endif
+  @objc deinit
+}
+@available(iOS 13, *)
+extension imme_ios.PassportReader : CoreNFC.NFCTagReaderSessionDelegate {
+  public func tagReaderSessionDidBecomeActive(_ session: CoreNFC.NFCTagReaderSession)
+  public func tagReaderSession(_ session: CoreNFC.NFCTagReaderSession, didInvalidateWithError error: Swift.Error)
+  public func tagReaderSession(_ session: CoreNFC.NFCTagReaderSession, didDetect tags: [CoreNFC.NFCTag])
+}
+@_hasMissingDesignatedInitializers @objc public class AAMVAv3DocumentData : imme_ios.AAMVADocumentData {
+  @objc override public var firstName: Swift.String? {
+    @objc get
+  }
+  @objc deinit
+}
+@available(iOS 13, macOS 10.15, *)
+public enum DataGroupId : Swift.Int, Swift.CaseIterable {
+  case COM
+  case DG1
+  case DG2
+  case DG3
+  case DG4
+  case DG5
+  case DG6
+  case DG7
+  case DG8
+  case DG9
+  case DG10
+  case DG11
+  case DG12
+  case DG13
+  case DG14
+  case DG15
+  case DG16
+  case SOD
+  case Unknown
+  public func getName() -> Swift.String
+  public static func getIDFromName(name: Swift.String) -> imme_ios.DataGroupId
+  public init?(rawValue: Swift.Int)
+  public typealias AllCases = [imme_ios.DataGroupId]
+  public typealias RawValue = Swift.Int
+  public static var allCases: [imme_ios.DataGroupId] {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class Reachability {
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class AAMVAv6DocumentData : imme_ios.AAMVADocumentData {
+  @objc deinit
+}
+@available(iOS 13, macOS 10.15, *)
+public enum NFCPassportReaderError : Swift.Error {
+  case ResponseError(Swift.String, Swift.UInt8, Swift.UInt8)
+  case InvalidResponse
+  case UnexpectedError
+  case NFCNotSupported
+  case NoConnectedTag
+  case D087Malformed
+  case InvalidResponseChecksum
+  case MissingMandatoryFields
+  case CannotDecodeASN1Length
+  case InvalidASN1Value
+  case UnableToProtectAPDU
+  case UnableToUnprotectAPDU
+  case UnsupportedDataGroup
+  case DataGroupNotRead
+  case UnknownTag
+  case UnknownImageFormat
+  case NotImplemented
+  case TagNotValid
+  case ConnectionError
+  case UserCanceled
+  case InvalidMRZKey
+  case MoreThanOneTagFound
+  case InvalidHashAlgorithmSpecified
+  case UnsupportedCipherAlgorithm
+  case UnsupportedMappingType
+  case PACEError(Swift.String, Swift.String)
+  case ChipAuthenticationFailed
+  case InvalidDataPassed(Swift.String)
+  case NotYetSupported(Swift.String)
+}
+@available(iOS 13, macOS 10.15, *)
+extension imme_ios.NFCPassportReaderError : Foundation.LocalizedError {
+  public var errorDescription: Swift.String? {
+    get
+  }
+}
+@available(iOS 13, macOS 10.15, *)
+public enum OpenSSLError : Swift.Error {
+  case UnableToGetX509CertificateFromPKCS7(Swift.String)
+  case UnableToVerifyX509CertificateForSOD(Swift.String)
+  case VerifyAndReturnSODEncapsulatedData(Swift.String)
+  case UnableToReadECPublicKey(Swift.String)
+  case UnableToExtractSignedDataFromPKCS7(Swift.String)
+  case VerifySignedAttributes(Swift.String)
+  case UnableToParseASN1(Swift.String)
+  case UnableToDecryptRSASignature(Swift.String)
+}
+@available(iOS 13, macOS 10.15, *)
+extension imme_ios.OpenSSLError : Foundation.LocalizedError {
+  public var errorDescription: Swift.String? {
+    get
+  }
+}
+public enum PassiveAuthenticationError : Swift.Error {
+  case UnableToParseSODHashes(Swift.String)
+  case InvalidDataGroupHash(Swift.String)
+  case SODMissing(Swift.String)
+}
+extension imme_ios.PassiveAuthenticationError : Foundation.LocalizedError {
+  public var errorDescription: Swift.String? {
+    get
+  }
+}
+@objc public protocol BarcodeParsing {
+  @objc func parseData(_ data: Foundation.Data) throws -> imme_ios.DocumentData
+}
+@available(iOS 13, *)
+public struct ResponseAPDU {
+  public var data: [Swift.UInt8]
+  public var sw1: Swift.UInt8
+  public var sw2: Swift.UInt8
+  public init(data: [Swift.UInt8], sw1: Swift.UInt8, sw2: Swift.UInt8)
+}
+@available(iOS 13, macOS 10.15, *)
+extension imme_ios.CertificateType : Swift.Equatable {}
+@available(iOS 13, macOS 10.15, *)
+extension imme_ios.CertificateType : Swift.Hashable {}
+@available(iOS 13, macOS 10.15, *)
+extension imme_ios.CertificateItem : Swift.Equatable {}
+@available(iOS 13, macOS 10.15, *)
+extension imme_ios.CertificateItem : Swift.Hashable {}
+@available(iOS 13, macOS 10.15, *)
+extension imme_ios.CertificateItem : Swift.RawRepresentable {}
+@available(iOS 13, macOS 10.15, *)
+extension imme_ios.DocTypeEnum : Swift.Equatable {}
+@available(iOS 13, macOS 10.15, *)
+extension imme_ios.DocTypeEnum : Swift.Hashable {}
+@available(iOS 13, macOS 10.15, *)
+extension imme_ios.DocTypeEnum : Swift.RawRepresentable {}
+extension imme_ios.PassportAuthenticationStatus : Swift.Equatable {}
+extension imme_ios.PassportAuthenticationStatus : Swift.Hashable {}
+extension imme_ios.Environment : Swift.Equatable {}
+extension imme_ios.Environment : Swift.Hashable {}
+extension imme_ios.BarcodeParserError : Swift.Equatable {}
+extension imme_ios.BarcodeParserError : Swift.Hashable {}
+extension imme_ios.BarcodeParserError : Swift.RawRepresentable {}
+extension imme_ios.SecureMessagingSupportedAlgorithms : Swift.Equatable {}
+extension imme_ios.SecureMessagingSupportedAlgorithms : Swift.Hashable {}
+extension imme_ios.CYCURID_REQUEST_TYPE : Swift.Equatable {}
+extension imme_ios.CYCURID_REQUEST_TYPE : Swift.Hashable {}
+extension imme_ios.APIType : Swift.Equatable {}
+extension imme_ios.APIType : Swift.Hashable {}
+extension imme_ios.PACEMappingType : Swift.Equatable {}
+extension imme_ios.PACEMappingType : Swift.Hashable {}
+extension imme_ios.RNCryptor.Error : Swift.Equatable {}
+extension imme_ios.RNCryptor.Error : Swift.Hashable {}
+extension imme_ios.RNCryptor.Error : Swift.RawRepresentable {}
+extension imme_ios.RNCryptor.DecryptorV3 : imme_ios.RNCryptorType {}
+extension imme_ios.FailedCheck : Swift.Equatable {}
+extension imme_ios.FailedCheck : Swift.Hashable {}
+extension imme_ios.LogLevel : Swift.Equatable {}
+extension imme_ios.LogLevel : Swift.Hashable {}
+extension imme_ios.LogLevel : Swift.RawRepresentable {}
+@available(iOS 13, macOS 10.15, *)
+extension imme_ios.DataGroupId : Swift.Equatable {}
+@available(iOS 13, macOS 10.15, *)
+extension imme_ios.DataGroupId : Swift.Hashable {}
+@available(iOS 13, macOS 10.15, *)
+extension imme_ios.DataGroupId : Swift.RawRepresentable {}

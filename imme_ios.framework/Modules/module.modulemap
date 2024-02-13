@@ -1,0 +1,11 @@
+framework module imme_ios {
+  umbrella header "imme_ios.h"
+
+  export *
+  module * { export * }
+}
+
+module imme_ios.Swift {
+  header "imme_ios-Swift.h"
+  requires objc
+}
