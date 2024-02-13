@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
                 LICENSE
               }
   s.author             = "Cycurid.com"
-  s.source = { :git => "/Users/ekamdhaliwal/MyFrameworkDistribution.git", :tag => "#{s.version}" }
+  s.source = { :git => "https://github.com/ekamesd/iOS-SDK/iOS-SDK.git", :tag => "#{s.version}" }
   # s.public_header_files = "MyFramework.framework/Headers/*.h"
   # s.source_files = "MyFramework.framework/Headers/*.h"
   # s.vendored_frameworks = "MyFramework.framework"
