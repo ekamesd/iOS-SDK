@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   # s.vendored_frameworks = "MyFramework.framework"
   s.public_header_files = "imme_ios.framework/Headers/*.h"
   s.source_files = "imme_ios.framework/Headers/*.h"
-  s.vendored_frameworks = "imme_ios.framework", "Alamofire.framework", "tensorflow_lite_gpu.framework"
+  s.vendored_frameworks = "imme_ios.framework","tensorflow_lite_gpu.framework"
   s.platform = :ios
   s.swift_version = "5.0"
   s.ios.deployment_target  = '13.0'
