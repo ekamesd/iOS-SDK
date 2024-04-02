@@ -11,9 +11,6 @@ Pod::Spec.new do |s|
               }
   s.author             = "Cycurid.com"
   s.source = { :git => "https://github.com/ekamesd/iOS-SDK", :tag => "#{s.version}" }
-  # s.public_header_files = "MyFramework.framework/Headers/*.h"
-  # s.source_files = "MyFramework.framework/Headers/*.h"
-  # s.vendored_frameworks = "MyFramework.framework"
   s.public_header_files = "imme_ios.framework/Headers/*.h"
   s.source_files = "imme_ios.framework/Headers/*.h"
   s.vendored_frameworks = "imme_ios.framework","tensorflow_lite_gpu.framework"
@@ -26,7 +23,7 @@ Pod::Spec.new do |s|
     }
   s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 
-    s.dependency "TensorFlowLiteGpuExperimental"
+    s.dependency "TensorFlowLiteGpuExperimental", "~> 0.0.1"
     s.dependency "OpenCV2", "~> 4.0.0"
 
 end
