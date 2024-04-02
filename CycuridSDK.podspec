@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
     }
   s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 
-    s.dependency "TensorFlowLiteGpuExperimental", "~> 0.0.1"
+    s.dependency "TensorFlowLiteGpuExperimental"
     s.dependency "OpenCV2", "~> 4.0.0"
 
 end
