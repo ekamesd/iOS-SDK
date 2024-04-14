@@ -829,6 +829,7 @@ public enum APIType {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class CycurIDClass {
+  public static func testLivenessExperimental()
   public func Configure(apiKey: Swift.String)
   public static func testSaveKeychain(jwt: Swift.String)
   public static func testRetrieveKeychain() -> Swift.String

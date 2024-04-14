@@ -123,6 +123,8 @@
 -(NSString *_Nonnull)getInfo66;
 -(NSString *_Nonnull)getInfo67;
 
+-(float)testFFT: (nonnull UIImage *)rawImage;
+
 @end
 
 #endif /* Mtcnn_h */
